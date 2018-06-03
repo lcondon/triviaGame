@@ -136,36 +136,63 @@ $(document).ready(function () {
     function timesUp() {
         timeCount.empty();
         questionDiv.html("Think faster!");
-        answerDisplay.html(questionGroup[gameCount-1].imgUrl + "<br><h2>" + questionGroup[gameCount-1].explanation + "</h2>");
+        answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
         unanswered++;
         if (gameCount < 10) {
             setTimeout(poseQuestion, 5000);
         } else {
-
+            questionDiv.html("Here's how you did.");
+            answerDisplay.html("<p>Correct answers: " + winCount + "</p><br><p>Incorrect answers: " + lossCount + "</p><br><p>Unanswered: " + unanswered + "</p>");
+            gameCount = 0;
+            lossCount = 0;
+            winCount = 0;
+            unanswered = 0;
+            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
+            startBtn.text("Start Game");
+            answerDisplay.append(startBtn);
+            $("#startBtn").on("click", poseQuestion);
         }
     }
 
     function wrongAnswer() {
         timeCount.empty();
         questionDiv.html("That is so wrong!");
-        answerDisplay.html(questionGroup[gameCount-1].imgUrl + "<br><h2>" + questionGroup[gameCount-1].explanation + "</h2>");
+        answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
         lossCount++;
         if (gameCount < 10) {
             setTimeout(poseQuestion, 5000);
         } else {
-
+            questionDiv.html("Here's how you did.");
+            answerDisplay.html("<p>Correct answers: " + winCount + "</p><br><p>Incorrect answers: " + lossCount + "</p><br><p>Unanswered: " + unanswered + "</p>");
+            gameCount = 0;
+            lossCount = 0;
+            winCount = 0;
+            unanswered = 0;
+            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
+            startBtn.text("Start Game");
+            answerDisplay.append(startBtn);
+            $("#startBtn").on("click", poseQuestion);
         }
     }
 
     function rightAnswer() {
         timeCount.empty();
         questionDiv.html("You got it!");
-        answerDisplay.html(questionGroup[gameCount-1].imgUrl + "<br><h2>" + questionGroup[gameCount-1].explanation + "</h2>");
+        answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
         winCount++;
         if (gameCount < 10) {
             setTimeout(poseQuestion, 5000);
         } else {
-
+            questionDiv.html("Here's how you did.");
+            answerDisplay.html("<p>Correct answers: " + winCount + "</p><br><p>Incorrect answers: " + lossCount + "</p><br><p>Unanswered: " + unanswered + "</p>");
+            gameCount = 0;
+            lossCount = 0;
+            winCount = 0;
+            unanswered = 0;
+            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
+            startBtn.text("Start Game");
+            answerDisplay.append(startBtn);
+            $("#startBtn").on("click", poseQuestion);
         }
     }
 

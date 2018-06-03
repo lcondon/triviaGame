@@ -147,8 +147,8 @@ $(document).ready(function () {
             lossCount = 0;
             winCount = 0;
             unanswered = 0;
-            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
-            startBtn.text("Start Game");
+            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='playBtn'>");
+            startBtn.text("Play Again");
             answerDisplay.append(startBtn);
             $("#startBtn").on("click", poseQuestion);
         }
@@ -169,7 +169,7 @@ $(document).ready(function () {
             winCount = 0;
             unanswered = 0;
             var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
-            startBtn.text("Start Game");
+            startBtn.text("Play Again");
             answerDisplay.append(startBtn);
             $("#startBtn").on("click", poseQuestion);
         }
@@ -190,7 +190,7 @@ $(document).ready(function () {
             winCount = 0;
             unanswered = 0;
             var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
-            startBtn.text("Start Game");
+            startBtn.text("Play Again");
             answerDisplay.append(startBtn);
             $("#startBtn").on("click", poseQuestion);
         }

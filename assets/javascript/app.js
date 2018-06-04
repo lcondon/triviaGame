@@ -149,7 +149,7 @@ $(document).ready(function () {
             var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='playBtn'>");
             startBtn.text("Play Again");
             answerDisplay.append(startBtn);
-            $("#startBtn").on("click", poseQuestion);
+            $("#playBtn").on("click", poseQuestion);
         }
     }
 

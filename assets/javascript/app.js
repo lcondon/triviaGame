@@ -88,9 +88,6 @@ $(document).ready(function () {
     questionDiv.append(startBtn);
     $("#startBtn").on("click", poseQuestion);
 
-
-
-
     function poseQuestion() {
         startBtn.remove();
         questionDiv.empty();
@@ -105,7 +102,8 @@ $(document).ready(function () {
             if (count <= 0) {
                 clearInterval(counter);
                 gameCount++;
-                timesUp();
+                unanswered++;
+                showAnswerPage("Think faster!");
                 return;
             }
             timeCount.html("You have " + count + " seconds remaining");
@@ -124,20 +122,21 @@ $(document).ready(function () {
         $(".answers").on("click", function () {
             gameCount++;
             if (this.hasAttribute("rightAnswer")) {
-                rightAnswer();
+                showAnswerPage("You got it!");
+                winCount++;
                 clearInterval(counter);
             } else {
-                wrongAnswer();
+                showAnswerPage("That is so wrong!");
+                lossCount++;
                 clearInterval(counter);
             }
         })
     }
 
-    function timesUp() {
+    function showAnswerPage(inputMessage) {
         timeCount.empty();
-        questionDiv.html("Think faster!");
+        questionDiv.html(inputMessage);
         answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
-        unanswered++;
         if (gameCount < 10) {
             setTimeout(poseQuestion, 5000);
         } else {
@@ -148,48 +147,6 @@ $(document).ready(function () {
             winCount = 0;
             unanswered = 0;
             var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='playBtn'>");
-            startBtn.text("Play Again");
-            answerDisplay.append(startBtn);
-            $("#startBtn").on("click", poseQuestion);
-        }
-    }
-
-    function wrongAnswer() {
-        timeCount.empty();
-        questionDiv.html("That is so wrong!");
-        answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
-        lossCount++;
-        if (gameCount < 10) {
-            setTimeout(poseQuestion, 5000);
-        } else {
-            questionDiv.html("Here's how you did.");
-            answerDisplay.html("<p>Correct answers: " + winCount + "</p><br><p>Incorrect answers: " + lossCount + "</p><br><p>Unanswered: " + unanswered + "</p>");
-            gameCount = 0;
-            lossCount = 0;
-            winCount = 0;
-            unanswered = 0;
-            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
-            startBtn.text("Play Again");
-            answerDisplay.append(startBtn);
-            $("#startBtn").on("click", poseQuestion);
-        }
-    }
-
-    function rightAnswer() {
-        timeCount.empty();
-        questionDiv.html("You got it!");
-        answerDisplay.html(questionGroup[gameCount - 1].imgUrl + "<br><h2>" + questionGroup[gameCount - 1].explanation + "</h2>");
-        winCount++;
-        if (gameCount < 10) {
-            setTimeout(poseQuestion, 5000);
-        } else {
-            questionDiv.html("Here's how you did.");
-            answerDisplay.html("<p>Correct answers: " + winCount + "</p><br><p>Incorrect answers: " + lossCount + "</p><br><p>Unanswered: " + unanswered + "</p>");
-            gameCount = 0;
-            lossCount = 0;
-            winCount = 0;
-            unanswered = 0;
-            var startBtn = $("<button type='button' class='btn btn-outline-secondary btn-lg' id='startBtn'>");
             startBtn.text("Play Again");
             answerDisplay.append(startBtn);
             $("#startBtn").on("click", poseQuestion);
